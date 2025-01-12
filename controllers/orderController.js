@@ -60,8 +60,15 @@ module.exports = {
           customer.customerProfit += (totalPrice-totalCostPrice); // Add the total price to the customer's profit
           await customer.save();
           
-          //Step 3.1 Update referrer Status
-          
+          //Step 3.1 Now, the percentage will be stored to the customer and on every transaction, he will give the profit to the referee
+          console.log("=>>>>>>>>>>>>>>>>>.")
+          console.log(customer.name)
+          if (customer.customerProfit >= 1){
+            //Distribute the profit
+            const customerReferrer = await Customer.findOne({where: {id:customer.referrerId}})
+            console.log(customerReferrer)
+
+          }
           // Step 4: Respond with the newly created order
           return res.status(201).json({
             message: 'Order created successfully',
