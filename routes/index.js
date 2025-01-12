@@ -29,6 +29,7 @@ router.get('/customers/:id/orders', customerController.getOrders);
 
 // StockItem routes
 router.post('/stockitems', stockItemController.createStockItem);
+router.get('/stockitems', stockItemController.searchForItem);
 router.put('/stockitems/:id', stockItemController.updateStockItem);
 router.delete('/stockitems/:id', stockItemController.deleteStockItem);
 

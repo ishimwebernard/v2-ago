@@ -1,4 +1,5 @@
 const { StockItem } = require('../models');
+const { Op } = require('sequelize');
 
 module.exports = {
   async createStockItem(req, res) {
@@ -37,4 +38,30 @@ module.exports = {
       res.status(500).json({ error: error.message });
     }
   },
+
+  async searchForItem(req, res) {
+    const searchTerm = req.query.key;
+    
+    try{
+      const stockItems = await StockItem.findAll({
+        where: {
+          [Op.or]: [
+            {
+              name: {
+                [Op.iLike]: `%${searchTerm}%`,
+              },
+            },
+            {
+              description: {
+                [Op.iLike]: `%${searchTerm}%`,
+              },
+            },
+          ],
+        },
+      });
+      res.json(stockItems)
+    }catch(error) {
+      res.status(500).json({error: error.message})
+    }
+  }
 };
