@@ -19,6 +19,16 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     phonenumber: DataTypes.STRING,
+    pfr: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
+      allowNull: false,
+    }, 
+     percentagetogive: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
+      allowNull: false,
+    },
     customerProfit: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
