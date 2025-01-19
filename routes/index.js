@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
 
 // Manager routes
 router.post('/managers', managerController.createManager);
+router.post('/managers/login', managerController.login)
 router.get('/managers', managerController.getManagers);
 router.post('/managers/shopkeepers', managerController.addShopkeeper);
 router.delete('/managers/:id', managerController.deleteManager);
@@ -19,11 +20,13 @@ router.delete('/managers/:id', managerController.deleteManager);
 
 // Shopkeeper routes
 router.get('/shopkeepers', shopkeeperController.getShopkeepers);
+router.post('/shopkeepers/login', shopkeeperController.login)
 router.get('/shopkeepers/:id/stock', shopkeeperController.getStock);
 router.get('/shopkeepers/:id/orders', shopkeeperController.getOrders);
 
 // Customer routes
 router.post('/customers', customerController.createCustomer);
+router.post('/customers/login', customerController.login);
 router.get('/customers', customerController.getCustomers);
 router.get('/customers/:id/orders', customerController.getOrders);
 
