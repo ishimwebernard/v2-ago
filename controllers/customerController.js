@@ -43,6 +43,29 @@ module.exports = {
       res.status(500).json({ error: error.message });
     }
   },
+  async getCustomerInfo(req, res) {
+    try{
+      const { id } = req.params;
+      const customerInfo = await Customer.findByPk(id);
+      if (!customerInfo) return res.status(400).json({error: 'Customer not found'})
+      res.status(200).json(customerInfo)
+    }catch(err){
+      res.json({error:err.message})
+    }
+  },
+  async getAllSlaves(req, res) {
+    try{
+      const { referrerId } = req.params
+      const allSlaves = await Customer.findAll({
+        attributes: ['name', 'phonenumber', 'customerClass'],
+        where: { referrerId }
+      })
+      if (!allSlaves) return res.status(200).json({error: 'You have no slaves'})
+      res.status(200).json(allSlaves)
+    }catch(err){
+      res.status(500).json({error: err})
+    }
+  },
   async login(req, res){
     const { phonenumber, password } = req.body;
 

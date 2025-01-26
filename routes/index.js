@@ -28,7 +28,9 @@ router.get('/shopkeepers/:id/orders', shopkeeperController.getOrders);
 router.post('/customers', customerController.createCustomer);
 router.post('/customers/login', customerController.login);
 router.get('/customers', customerController.getCustomers);
+router.get('/customers/:id', customerController.getCustomerInfo);
 router.get('/customers/:id/orders', customerController.getOrders);
+router.get('/customers/:referrerId/slaves', customerController.getAllSlaves)
 
 // StockItem routes
 router.post('/stockitems', stockItemController.createStockItem);
@@ -41,5 +43,6 @@ router.delete('/stockitems/:id', stockItemController.deleteStockItem);
 router.post('/orders', orderController.createOrder);
 router.get('/orders/:id', orderController.getOrder);
 router.put('/orders/:id/status', orderController.updateOrderStatus);
+router.get('/orders/customer/:customerId', orderController.getOrdersByCustomer)
 
 module.exports = router;
