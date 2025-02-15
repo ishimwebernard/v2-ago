@@ -38,11 +38,14 @@ router.get('/stockitems', stockItemController.searchForItem);
 router.get('/getstockitems', stockItemController.getAllItems)
 router.put('/stockitems/:id', stockItemController.updateStockItem);
 router.delete('/stockitems/:id', stockItemController.deleteStockItem);
+router.get('/getstockitems/:shopkeeperId', stockItemController.getItemByShopKeeper);
+
 
 // Order routes
 router.post('/orders', orderController.createOrder);
 router.get('/orders/:id', orderController.getOrder);
 router.put('/orders/:id/status', orderController.updateOrderStatus);
 router.get('/orders/customer/:customerId', orderController.getOrdersByCustomer)
+router.get('/orders/shopkeeper/:id', orderController.getOrderByShopKeeper)
 
 module.exports = router;

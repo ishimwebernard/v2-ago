@@ -15,11 +15,11 @@ module.exports = {
   async updateStockItem(req, res) {
     try {
       const { id } = req.params;
-      const { name, quantity, price, picture } = req.body;
+      const { name, quantity, price, picture, costprice, description } = req.body;
       const stockItem = await StockItem.findByPk(id);
       if (!stockItem) return res.status(404).json({ error: 'StockItem not found' });
 
-      await stockItem.update({ name, quantity, price, picture });
+      await stockItem.update({ name, quantity, price, picture, costprice, description });
       res.json(stockItem);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -70,6 +70,21 @@ module.exports = {
       res.json(stockItems)
     }catch(error) {
       res.status(500).json({error: error.message})
+    }
+  },
+  async getItemByShopKeeper(req, res){
+    try{
+      const {shopkeeperId} = req.params
+      const items = await StockItem.findAll(
+       {
+        where: {
+          shopkeeperId: shopkeeperId
+        }
+       }
+      )
+      return res.status(200).json(items)
+    }catch(error){
+      return res.status(500).json({error: error.message})
     }
   }
 };

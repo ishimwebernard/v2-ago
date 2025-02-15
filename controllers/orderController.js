@@ -181,4 +181,19 @@ module.exports = {
       res.status(500).json({ error: error.message });
     }
   },
+  async getOrderByShopKeeper(req, res){
+    try{
+      const { id } = req.params
+      const data = await Order.findAll({
+        where: {
+          shopkeeperId: id
+        },
+        include: OrderItem 
+      })
+      res.status(200).json(data)
+    }catch(error){
+      console.log(error)
+      res.status(500).json(error)
+    }
+  }
 };
