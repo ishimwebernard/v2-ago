@@ -43,6 +43,7 @@ router.get('/getstockitems/:shopkeeperId', stockItemController.getItemByShopKeep
 
 // Order routes
 router.post('/orders', orderController.createOrder);
+router.get('/getallorders', orderController.getAllOrders)
 router.get('/orders/:id', orderController.getOrder);
 router.put('/orders/:id/status', orderController.updateOrderStatus);
 router.get('/orders/customer/:customerId', orderController.getOrdersByCustomer)

@@ -143,8 +143,14 @@ module.exports = {
           return res.status(500).json({ message: 'Internal server error', error });
         }
       },
-    
-
+    async getAllOrders(req, res){
+      try{
+        const allOrders = await Order.findAll({include: OrderItem});
+        res.status(200).json(allOrders)
+      }catch(error){
+        res.status(500).json({error: 'Something went wrong'})
+      }
+    },
   async getOrder(req, res) {
     try {
       const { id } = req.params;
