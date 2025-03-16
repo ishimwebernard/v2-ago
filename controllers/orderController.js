@@ -74,7 +74,7 @@ module.exports = {
             });
           // Step 2: Create the associated order items and update stock quantities
           for (const item of items) {
-            const stockItem = await StockItem.findByPk(item.stockItemId);
+            const stockItem = await StockItem.findByPk(item.id);
             
     
             if (!stockItem) {
@@ -93,7 +93,7 @@ module.exports = {
             // Create the order item
             await OrderItem.create({
               orderId: newOrder.id,
-              stockItemId: item.stockItemId,
+              stockItemId: item.id,
               quantity: item.quantity,
               price: stockItem.price,
               costprice: stockItem.costprice,
