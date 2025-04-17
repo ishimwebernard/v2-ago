@@ -5,7 +5,12 @@ module.exports = {
   async createCustomer(req, res) {
     try {
       const { name, email, password, referrerId, phonenumber } = req.body;
+      const customerExists = await Customer.findOne({where: {phonenumber}})
+      if (customerExists){
+        return res.status(400).json({'error': 'Phone number in use'})
+      }
       const customer = await Customer.create({ name, email, password, referrerId, phonenumber });
+
       res.status(201).json(customer);
     } catch (error) {
       res.status(500).json({ error: error.message });
