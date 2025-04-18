@@ -7,7 +7,7 @@ const stockItemController = require('../controllers/stockItemController');
 const orderController = require('../controllers/orderController');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Ago Shopping API' });
 });
 
 // Manager routes

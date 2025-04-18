@@ -1,3 +1,4 @@
+
 {
   "development": {
     "username": "postgres",
@@ -14,10 +15,13 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "ago_prod",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "username": "koyeb-adm",
+    "password": "npg_aZVirk6e8lLo",
+    "database": "koyebdb",
+    "host": "ep-bold-sky-a2pdkx0r.eu-central-1.pg.koyeb.app",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": true
+    }
   }
 }
