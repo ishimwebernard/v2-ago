@@ -9,6 +9,15 @@ module.exports = {
       res.status(500).json({ error: error.message });
     }
   },
+  async createShopkeeper(req, res) {
+    const {name, phonenumber, email, password,managerId} = req.body
+    try{
+      const newshopkeeper = await Shopkeeper.create({name, phonenumber, email, password,managerId})
+      res.status(201).json({message: 'Shopkeeper created'})
+    }catch(error){
+      res.status(500).json({error: error.message})
+    }
+  },
 
   async getStock(req, res) {
     try {

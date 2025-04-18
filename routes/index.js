@@ -20,6 +20,7 @@ router.delete('/managers/:id', managerController.deleteManager);
 
 // Shopkeeper routes
 router.get('/shopkeepers', shopkeeperController.getShopkeepers);
+router.post('/shopkeepers/create', shopkeeperController.createShopkeeper)
 router.post('/shopkeepers/login', shopkeeperController.login)
 router.get('/shopkeepers/:id/stock', shopkeeperController.getStock);
 router.get('/shopkeepers/:id/orders', shopkeeperController.getOrders);
